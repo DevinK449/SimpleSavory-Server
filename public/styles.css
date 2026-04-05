@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: #fdfaf6;
+  color: #2c2c2c;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #2d5a3d;
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+header p {
+  font-size: 1.05rem;
+  color: #d4ddd7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  color: #2d5a3d;
+  margin-bottom: 20px;
+}
+
+.endpoints {
+  margin-bottom: 48px;
+}
+
+.endpoint-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid #e8e0d6;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.3s ease;
+}
+
+.endpoint-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.method {
+  background-color: #2d5a3d;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.endpoint-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.endpoint-info h3 a {
+  color: #2d5a3d;
+  text-decoration: none;
+}
+
+.endpoint-info h3 a:hover {
+  color: #d4a84b;
+  text-decoration: underline;
+}
+
+.endpoint-info p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.endpoint-info p a {
+  color: #d4a84b;
+  font-weight: 500;
+}
+
+.recipes-preview {
+  background: #fff;
+  border: 1px solid #e8e0d6;
+  border-radius: 12px;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.subtitle {
+  color: #888;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.tag {
+  background-color: #f5ede0;
+  color: #2d5a3d;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: #999;
+  font-size: 0.85rem;
+  border-top: 1px solid #e8e0d6;
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .endpoint-card {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simply Savory API</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>🍽 Simply Savory API</h1>
+    <p>Welcome to the Simply Savory recipe data server. Use the endpoints below to access recipe information.</p>
+  </header>
+
+  <main>
+    <section class="endpoints">
+      <h2>Available Endpoints</h2>
+
+      <div class="endpoint-card">
+        <div class="method">GET</div>
+        <div class="endpoint-info">
+          <h3><a href="/api/recipes">/api/recipes</a></h3>
+          <p>Returns all recipes with full details including ingredients, instructions, ratings, and images.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-card">
+        <div class="method">GET</div>
+        <div class="endpoint-info">
+          <h3><a href="/api/recipes/1">/api/recipes/:id</a></h3>
+          <p>Returns a single recipe by its ID. Example: <a href="/api/recipes/1">/api/recipes/1</a> returns Creamy Garlic Pasta.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="recipes-preview">
+      <h2>Recipe Collection</h2>
+      <p class="subtitle">10 recipes available across 9 categories</p>
+      <div class="categories">
+        <span class="tag">Breakfast</span>
+        <span class="tag">Lunch</span>
+        <span class="tag">Dinner</span>
+        <span class="tag">Pasta</span>
+        <span class="tag">Chicken</span>
+        <span class="tag">Vegetarian</span>
+        <span class="tag">Soups</span>
+        <span class="tag">Quick &amp; Easy</span>
+        <span class="tag">Desserts</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Simply Savory. All rights reserved.</p>
+  </footer>
+</body>
+</html>
