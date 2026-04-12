@@ -1,11 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const Joi = require("joi");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors());
+app.use(express.json());
 app.use(express.static("public"));
 
 // Recipe data
@@ -312,6 +314,22 @@ const recipes = [
   }
 ];
 
+const recipeSchema = Joi.object({
+  name: Joi.string().min(2).max(100).required(),
+  description: Joi.string().min(5).max(300).required(),
+  longDescription: Joi.string().min(5).max(600).optional().allow(""),
+  time: Joi.string().min(2).max(50).required(),
+  serves: Joi.string().min(1).max(30).required(),
+  rating: Joi.string().pattern(/^\d(\.\d)?$/).optional().default("0.0"),
+  reviews: Joi.number().integer().min(0).optional().default(0),
+  category: Joi.string()
+    .valid("Breakfast", "Lunch", "Dinner", "Pasta", "Chicken", "Vegetarian", "Soups", "Quick & Easy", "Desserts")
+    .required(),
+  image: Joi.string().optional().allow(""),
+  ingredients: Joi.array().items(Joi.string().min(1)).min(1).required(),
+  instructions: Joi.array().items(Joi.string().min(1)).min(1).required(),
+});
+
 // GET all recipes
 app.get("/api/recipes", (req, res) => {
   res.json(recipes);
@@ -324,6 +342,35 @@ app.get("/api/recipes/:id", (req, res) => {
     return res.status(404).json({ error: "Recipe not found" });
   }
   res.json(recipe);
+});
+
+// POST a new recipe
+app.post("/api/recipes", (req, res) => {
+  const { error, value } = recipeSchema.validate(req.body, { abortEarly: false });
+  if (error) {
+    return res.status(400).json({
+      success: false,
+      errors: error.details.map((d) => d.message),
+    });
+  }
+
+  const newRecipe = {
+    id: recipes.length > 0 ? recipes[recipes.length - 1].id + 1 : 1,
+    name: value.name,
+    description: value.description,
+    longDescription: value.longDescription || value.description,
+    time: value.time,
+    serves: value.serves,
+    rating: value.rating,
+    reviews: value.reviews ?? 0,
+    category: value.category,
+    image: value.image || "images/hero.jpg",
+    ingredients: value.ingredients,
+    instructions: value.instructions,
+  };
+
+  recipes.push(newRecipe);
+  res.status(201).json({ success: true, recipe: newRecipe });
 });
 
 // Serve index.html for root
